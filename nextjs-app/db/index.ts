@@ -1,0 +1,12 @@
+import postgres from "postgres";
+import { drizzle } from "drizzle-orm/postgres-js";
+
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  console.log("DATABASE_URL missing");
+}
+
+const client = postgres(connectionString!);
+
+export const db = drizzle(client);
